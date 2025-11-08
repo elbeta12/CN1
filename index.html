@@ -4,97 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contenidos Ciencias Naturales</title>
-<style>
+  <style>/* ===============================
+   FULL CSS: Contenidos Ciencias Naturales
+   Reemplaza todo el <style> actual por este bloque
+   =============================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
+:root{
+  --accent1: #a6e0ff;
+  --accent2: #3da1f0;
+  --accent3: #256db3;
+  --text-light: #e9f9ff;
+  --bg-overlay: rgba(0,0,0,0.45);
+}
+
+/* ====== Reset / Body ====== */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
   background-size: cover;
-  color: #e9f9ff;
+  color: var(--text-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing:antialiased;
 }
 
+/* sombreado general sobre el fondo (caparazón) */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--bg-overlay);
   z-index: 0;
+  pointer-events: none;
 }
 
-.pagina {
-  position: relative;
-  z-index: 2;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 85%;
-  max-width: 800px;
-  padding: 40px;
-  text-align: center;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 25px rgba(0, 80, 255, 0.2);
-  animation: fadeIn 0.6s ease-in-out;
-  overflow-y: auto;
-  max-height: 90vh;
-}
-
-.pagina.activa {
-  display: flex;
-}
-
-h1 {
-  font-size: 2.5em;
-  color: #a6e0ff;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 8px #0e2c45;
-}
-
-p {
-  font-size: 1.1em;
-  color: #d7f3ff;
-  margin-bottom: 30px;
-}
-
-.botones {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-button {
-  background: linear-gradient(145deg, #3da1f0, #256db3);
-  border: none;
-  padding: 14px 30px;
-  border-radius: 30px;
-  color: #fff;
-  font-size: 1.1em;
-  cursor: pointer;
-  transition: 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-button:hover {
-  background: linear-gradient(145deg, #51b8ff, #2f8dde);
-  transform: scale(1.05);
-}
-
-.volver {
-  margin-top: 25px;
-  background: linear-gradient(145deg, #123c6b, #0b284b);
-}
-
+/* ====== Decoraciones (imágenes flotantes) ====== */
 .decoracion {
   position: absolute;
   width: 110px;
@@ -104,39 +57,108 @@ button:hover {
   pointer-events: none;
 }
 
-/* 🔬 MENÚ DE SELECCIÓN CIENTÍFICO */
+/* ====== Contenedor de páginas ====== */
+.pagina {
+  position: relative;
+  z-index: 2; /* sobre la capa oscura y decoraciones */
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  max-width: 900px;
+  padding: 40px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.08);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  animation: fadeIn 0.6s ease-in-out;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* activar página visible */
+.pagina.activa {
+  display: flex;
+}
+
+/* ====== Tipografías y texto ====== */
+h1 {
+  font-size: 2.4em;
+  color: var(--accent1);
+  margin: 0 0 12px 0;
+  text-shadow: 0 6px 18px rgba(10,40,60,0.35);
+}
+p {
+  font-size: 1.05em;
+  color: #d7f3ff;
+  margin: 10px 0 22px 0;
+  line-height: 1.45;
+}
+
+/* ====== Botones ====== */
+.botones {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+button {
+  background: linear-gradient(145deg, var(--accent2), var(--accent3));
+  border: none;
+  padding: 12px 28px;
+  border-radius: 28px;
+  color: #fff;
+  font-size: 1.03em;
+  cursor: pointer;
+  transition: transform .22s ease, box-shadow .22s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+}
+.volver {
+  margin-top: 22px;
+  background: linear-gradient(145deg,#123c6b,#0b284b);
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+/* ====== Select (menú de temas) ====== */
 select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: rgba(255, 255, 255, 0.15);
+  width: auto;
+  min-width: 220px;
+  max-width: 100%;
+  background: rgba(255,255,255,0.12);
   color: #e3f8ff;
-  font-size: 1.05em;
-  padding: 12px 45px 12px 20px;
-  border: 2px solid rgba(0, 150, 255, 0.4);
-  border-radius: 30px;
+  font-size: 1.02em;
+  padding: 12px 44px 12px 18px;
+  border: 2px solid rgba(0,150,255,0.35);
+  border-radius: 28px;
   cursor: pointer;
-  transition: 0.3s ease;
-  backdrop-filter: blur(8px);
+  transition: all .25s ease;
+  backdrop-filter: blur(6px);
   position: relative;
-  box-shadow: 0 0 10px rgba(0, 150, 255, 0.1);
-  animation: aparecerSelect 0.6s ease;
+  box-shadow: 0 6px 20px rgba(0,150,255,0.06);
+  margin: 12px 0 18px 0;
 }
 
-select:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: #57c3ff;
-  box-shadow: 0 0 12px rgba(87, 195, 255, 0.5);
-  transform: scale(1.02);
-}
+/* Simular flecha (placer visual) */
+select::after { content: "▼"; position: absolute; right: 18px; top: 12px; color: rgba(200,240,255,0.9); pointer-events: none; }
+select::-ms-expand { display: none; }
 
-select:focus {
-  outline: none;
-  border-color: #84d6ff;
-  box-shadow: 0 0 15px rgba(132, 214, 255, 0.6);
-}
+select:hover { transform: translateY(-2px); border-color: #57c3ff; box-shadow: 0 8px 30px rgba(87,195,255,0.12); }
+select:focus { outline: none; border-color: #84d6ff; box-shadow: 0 10px 36px rgba(132,214,255,0.18); }
 
-/* Opciones */
+/* Opciones (nota: el estilizado de <option> es limitado en algunos navegadores) */
 option {
   background-color: #0b203a;
   color: #c9f1ff;
@@ -144,48 +166,99 @@ option {
   border-bottom: 1px solid #104a6a;
   font-size: 1em;
 }
+option:hover, option:focus, option:checked { background-color: #155a8a; color: #fff; }
 
-option:hover,
-option:checked,
-option:focus {
-  background-color: #155a8a;
-  color: #ffffff;
+/* ====== Bloques de tema ====== */
+.tema {
+  display: none;
+  text-align: justify;
+  margin-top: 8px;
+}
+.tema.activo {
+  display: block;
+  animation: fadeIn 0.6s ease;
+}
+.tema h2 {
+  color: var(--accent3);
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+.tema p {
+  color: #07263a;
+  background: rgba(255,255,255,0.92);
+  padding: 12px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+.tema img {
+  width: 100%;
+  border-radius: 12px;
+  margin: 12px 0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-/* Animaciones */
+/* ====== Animaciones ====== */
 @keyframes flotar {
   0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-  100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-18px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(-4deg); }
 }
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: translateY(10px) scale(.995); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
-
 @keyframes aparecerSelect {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.tema {
-  display: none;
-  text-align: justify;
+/* ====== Responsive: tablets / phones ====== */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 0;
+    height: auto;
+    background-attachment: scroll;
+  }
+
+  .pagina {
+    width: 95%;
+    padding: 22px;
+    max-height: none;
+    min-height: 100vh;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  }
+
+  h1 { font-size: 1.9em; text-align: center; }
+  p { font-size: 1em; }
+
+  .botones { flex-direction: column; gap: 12px; width: 100%; }
+  button { width: 100%; padding: 12px; font-size: 1em; }
+
+  select { width: 100%; min-width: unset; font-size: 1em; padding: 10px 36px 10px 14px; }
+  .tema p { font-size: 0.97em; padding: 10px; }
+  .tema img { border-radius: 10px; }
+
+  .decoracion { width: 70px; opacity: 0.14; animation: none; }
 }
 
-.tema.activo {
-  display: block;
-  animation: fadeIn 0.7s ease;
+@media (max-width: 500px) {
+  .pagina { padding: 18px 12px; }
+  h1 { font-size: 1.5em; }
+  button { font-size: 0.95em; padding: 10px; }
+  select { font-size: 0.95em; padding: 9px 30px 9px 12px; }
+  .decoracion { width: 56px; opacity: 0.12; }
 }
 
-.tema img {
-  width: 100%;
-  border-radius: 15px;
-  margin: 15px 0;
+/* small tweak for very tall content to allow comfortable scrolling */
+@media (min-height: 900px) {
+  .pagina { max-height: 92vh; }
 }
+
+
 </style>
-
 </head>
 <body>
   <!-- Hojas decorativas -->
