@@ -1,9 +1,3 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contenidos Ciencias Naturales</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
@@ -16,13 +10,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
   z-index: 0;
@@ -97,14 +92,14 @@ button:hover {
 
 .decoracion {
   position: absolute;
-  width: 110px;
+  width: 100px;
   opacity: 0.25;
   animation: flotar 7s ease-in-out infinite alternate;
   z-index: 1;
   pointer-events: none;
 }
 
-/* 🔬 MENÚ DE SELECCIÓN CIENTÍFICO */
+/* 🔬 MENÚ DE SELECCIÓN */
 select {
   appearance: none;
   -webkit-appearance: none;
@@ -136,7 +131,6 @@ select:focus {
   box-shadow: 0 0 15px rgba(132, 214, 255, 0.6);
 }
 
-/* Opciones */
 option {
   background-color: #0b203a;
   color: #c9f1ff;
@@ -150,23 +144,6 @@ option:checked,
 option:focus {
   background-color: #155a8a;
   color: #ffffff;
-}
-
-/* Animaciones */
-@keyframes flotar {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-  100% { transform: translateY(0) rotate(-5deg); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes aparecerSelect {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .tema {
@@ -184,145 +161,58 @@ option:focus {
   border-radius: 15px;
   margin: 15px 0;
 }
+
+/* 📱 RESPONSIVE PARA CELULARES Y TABLETS */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .pagina {
+    width: 95%;
+    padding: 25px;
+    max-height: 95vh;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 0.95em;
+    padding: 12px 20px;
+  }
+
+  select {
+    width: 90%;
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  .decoracion {
+    width: 70px;
+    opacity: 0.3;
+  }
+}
+
+/* 🎥 Animaciones */
+@keyframes flotar {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes aparecerSelect {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
-
-</head>
-<body>
-  <!-- Hojas decorativas -->
-  <img src="https://cdn-icons-png.flaticon.com/512/818/818866.png" class="decoracion" style="top:5%; left:10%; animation-delay:0s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/5388/5388650.png" class="decoracion" style="top:15%; right:10%; animation-delay:1s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/7105/7105088.png" class="decoracion" style="bottom:10%; left:5%; animation-delay:2s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/706/706200.png" class="decoracion" style="bottom:20%; right:15%; animation-delay:3s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/2867/2867197.png" class="decoracion" style="top:40%; left:85%; animation-delay:1.5s;">
-  <img src="https://cdn-icons-png.flaticon.com/512/3721/3721190.png" class="decoracion" style="bottom:60%; left:30%; animation-delay:2.5s;">
-
-  <!-- INICIO -->
-  <div id="inicio" class="pagina activa">
-    <h1>🌿 Contenidos Ciencias Naturales</h1>
-    <p>Hecho por: <strong>Juan Esteban Betancur</strong></p>
-    <div class="botones">
-      <button onclick="mostrar('octavo')">Octavo</button>
-      <button onclick="mostrar('noveno')">Noveno</button>
-      <button onclick="mostrar('decimo')">Décimo</button>
-    </div>
-  </div>
-
- <!-- OCTAVO -->
-<div id="octavo" class="pagina">
-  <h1>> Octavo</h1>
-  <p>Selecciona un tema:</p>
-  <select onchange="mostrarTema('octavo', this.value)">
-    <option value="">-- Selecciona un tema --</option>
-    <option value="1">Tema 1</option>
-    <option value="2">Tema 2</option>
-    <option value="3">Tema 3</option>
-  </select>
-
-  <div id="octavo-tema1" class="tema">
-    <h2>TEMA 1</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <div id="octavo-tema2" class="tema">
-    <h2>TEMA 2</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <div id="octavo-tema3" class="tema">
-    <h2>TEMA 3</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <button class="volver" onclick="mostrar('inicio')">Inicio</button>
-</div>
-
-<!-- NOVENO -->
-<div id="noveno" class="pagina">
-  <h1>> Noveno</h1>
-  <p>Selecciona un tema:</p>
-  <select onchange="mostrarTema('noveno', this.value)">
-    <option value="">-- Selecciona un tema --</option>
-    <option value="1">Tema 1</option>
-    <option value="2">Tema 2</option>
-    <option value="3">Tema 3</option>
-  </select>
-
-  <div id="noveno-tema1" class="tema">
-    <h2>TEMA 1</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <div id="noveno-tema2" class="tema">
-    <h2>TEMA 2</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <div id="noveno-tema3" class="tema">
-    <h2>TEMA 3</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <button class="volver" onclick="mostrar('inicio')">Inicio</button>
-</div>
-
-<!-- DÉCIMO -->
-<div id="decimo" class="pagina">
-  <h1>> Décimo</h1>
-  <p>Selecciona un tema:</p>
-  <select onchange="mostrarTema('decimo', this.value)">
-    <option value="">-- Selecciona un tema --</option>
-    <option value="1">Tema 1</option>
-    <option value="2">Tema 2</option>
-    <option value="3">Tema 3</option>
-  </select>
-
-  <div id="decimo-tema1" class="tema">
-    <h2>TEMA 1</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="vhttps://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <div id="decimo-tema2" class="tema">
-    <h2>TEMA 2</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <div id="decimo-tema3" class="tema">
-    <h2>TEMA 3</h2>
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/869/869739.png">
-    <p>TEMA TEMA TEMA TEMA TEMA TEMA...</p>
-  </div>
-
-  <button class="volver" onclick="mostrar('inicio')">Inicio</button>
-</div>
-
-
-  <script>
-    function mostrar(id) {
-      document.querySelectorAll('.pagina').forEach(p => p.classList.remove('activa'));
-      document.getElementById(id).classList.add('activa');
-    }
-
-    function mostrarTema(grado, num) {
-      document.querySelectorAll(`#${grado} .tema`).forEach(t => t.classList.remove('activo'));
-      if (num) document.getElementById(`${grado}-tema${num}`).classList.add('activo');
-    }
-  </script>
-</body>
-</html>
